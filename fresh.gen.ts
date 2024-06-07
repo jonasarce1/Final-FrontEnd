@@ -9,6 +9,7 @@ import * as $_middleware from "./routes/_middleware.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $register from "./routes/register.tsx";
+import * as $video_id_ from "./routes/video/[id].tsx";
 import * as $videos from "./routes/videos.tsx";
 import * as $Fav from "./islands/Fav.tsx";
 import * as $Logout from "./islands/Logout.tsx";
@@ -23,6 +24,7 @@ const manifest = {
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
     "./routes/register.tsx": $register,
+    "./routes/video/[id].tsx": $video_id_,
     "./routes/videos.tsx": $videos,
   },
   islands: {
