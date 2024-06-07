@@ -10,6 +10,7 @@ import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $register from "./routes/register.tsx";
 import * as $videos from "./routes/videos.tsx";
+import * as $Fav from "./islands/Fav.tsx";
 import * as $Logout from "./islands/Logout.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
@@ -25,6 +26,7 @@ const manifest = {
     "./routes/videos.tsx": $videos,
   },
   islands: {
+    "./islands/Fav.tsx": $Fav,
     "./islands/Logout.tsx": $Logout,
   },
   baseUrl: import.meta.url,

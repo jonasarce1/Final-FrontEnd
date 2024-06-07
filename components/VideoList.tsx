@@ -1,5 +1,6 @@
 import { FunctionalComponent } from "preact";
 import { Video } from "../types.ts"
+import Fav from "../islands/Fav.tsx";
 
 type VideoListProps = {
     videos: Video[],
@@ -21,6 +22,7 @@ const VideoList:FunctionalComponent<VideoListProps> = ({videos, userId}) => {
                                 <p class="video-release-date">Release date: {video.date}</p>
                             </div>
                         </a>
+                        <Fav userId={userId} videoId={video.id} fav = {video.fav}/>
                     </div>
                 ))}
             </div>
