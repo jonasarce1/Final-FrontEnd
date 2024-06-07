@@ -1,7 +1,8 @@
-const Page = () => {
-  return(
-    <h1>Buenas noches a todos - El raton vacilon</h1>
-  )
+export const handler = () => {
+  return new Response("", {
+    status: 307,
+    headers: {
+      location: "/videos"
+    }
+  })
 }
-
-export default Page;
