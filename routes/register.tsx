@@ -2,7 +2,7 @@ import { FreshContext, Handlers, PageProps, RouteConfig } from "$fresh/server.ts
 import { User } from "../types.ts";
 import jwt from "jsonwebtoken";
 import { setCookie } from "$std/http/cookie.ts";
-import Login from "../components/Login.tsx";
+import Register from "../components/Register.tsx";
 
 export const config: RouteConfig = {
   skipInheritedLayouts: true, // Skip already inherited layouts
@@ -12,12 +12,14 @@ type Data = {
     message: string
 }
 
+
 export const handler:Handlers<Data> = {
     POST: async(req:Request, ctx:FreshContext<unknown, Data>) => {
         const form = await req.formData();
 
         const email = form.get("email");
         const password = form.get("password");
+        const name = form.get("name");
 
         const API_URL = Deno.env.get("API_URL");
         const JWT_SECRET = Deno.env.get("JWT_SECRET");
@@ -26,18 +28,18 @@ export const handler:Handlers<Data> = {
             throw new Error("Error al obtener las variables de entorno");
         }
 
-        const response = await fetch(`${API_URL}/checkuser`, {
+        const response = await fetch(`${API_URL}/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email, password
+                email, password, name
             })
         })
 
-        if(response.status === 404 || response.status === 400){
-            return ctx.render({message: "Incorrect credentials or user does not exist"})
+        if(response.status === 400){
+            return ctx.render({message: "User already exists with that mail"})
         }
 
         if(response.status === 200){
@@ -78,7 +80,7 @@ export const handler:Handlers<Data> = {
 
 const Page = (props:PageProps<Data>) => {
     return(
-        <Login message={props.data?.message}/>
+        <Register message={props.data?.message}/>
     )
 }
 

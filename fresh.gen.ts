@@ -7,6 +7,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
+import * as $register from "./routes/register.tsx";
 import * as $videos from "./routes/videos.tsx";
 
 import { type Manifest } from "$fresh/server.ts";
@@ -18,6 +19,7 @@ const manifest = {
     "./routes/_middleware.tsx": $_middleware,
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
+    "./routes/register.tsx": $register,
     "./routes/videos.tsx": $videos,
   },
   islands: {},
