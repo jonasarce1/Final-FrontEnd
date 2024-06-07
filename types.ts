@@ -10,3 +10,14 @@ export type State = {
     name: string,
     id: string
 }
+
+export type Video = {
+    title: string,
+    thumbnail: string,
+    description: string,
+    duration: string,
+    youtubeid: string,
+    date: string,
+    id: string,
+    fav:boolean
+}
